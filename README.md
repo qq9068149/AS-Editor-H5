@@ -20,8 +20,6 @@
 ![步骤2](https://images.gitee.com/uploads/images/2021/1027/180644_1710b3f0_5546746.png "image2.png")
 ![步骤3](https://images.gitee.com/uploads/images/2021/1027/180656_e71a6d53_5546746.png "image3.png")
 
-> 已配置好vant ui 按需引入
-页面中需要使用的话 import { 组件 } from 'vant';
 
 #### 参与贡献
 
