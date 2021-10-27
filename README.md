@@ -10,7 +10,15 @@
 3.  npm run build （打包）
 
 #### 使用说明
+
+##### 使用教程
+######使用教程
+
 > home.vue 页面为demo实例
+
+![步骤1](https://images.gitee.com/uploads/images/2021/1027/180625_a6903982_5546746.png "image1.png")
+![步骤2](https://images.gitee.com/uploads/images/2021/1027/180644_1710b3f0_5546746.png "image2.png")
+![步骤3](https://images.gitee.com/uploads/images/2021/1027/180656_e71a6d53_5546746.png "image3.png")
 
 > 已配置好vant ui 按需引入
 页面中需要使用的话 import { 组件 } from 'vant';
