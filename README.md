@@ -1,7 +1,7 @@
 # AS-Editor-H5
 
 #### 介绍
-基于 vue 可视化 [AS-Editor](https://gitee.com/was666/as-editor.git) 的H5展示模板，与 [AS-Editor](https://gitee.com/was666/as-editor.git) 一起使用可以可视化生成vue页面
+基于 vue 开发的移动端模版，可以通过定义的JSON生成页面。与 [AS-Editor](https://gitee.com/was666/as-editor.git) 一起使用可以可视化生成vue页面
 [AS-Editor链接](https://gitee.com/was666/as-editor.git)
 
 #### 安装教程
