@@ -20,7 +20,7 @@ AS-Editor链接：[https://gitee.com/was666/as-editor.git](https://gitee.com/was
 ###### 打开AS-Editor
 ![步骤1](https://images.gitee.com/uploads/images/2021/1027/180625_a6903982_5546746.png "image1.png")
 ![步骤2](https://images.gitee.com/uploads/images/2021/1027/180644_1710b3f0_5546746.png "image2.png")
-###### 打开AS-Editor-H5  以home.vue 页面为demo实例
+###### 打开AS-Editor-H5  以src/views/home.vue 页面为demo实例
 ![步骤3](https://images.gitee.com/uploads/images/2021/1027/180656_e71a6d53_5546746.png "image3.png")
 
 
