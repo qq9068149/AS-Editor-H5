@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import CONST from '@/utils/CONST'
 
+// 样式初始化
+import 'css/reset.css'
+import 'css/minx.less'
 
 //vantUi导入
 import Vant from 'vant';

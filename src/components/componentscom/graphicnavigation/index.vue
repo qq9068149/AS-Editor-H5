@@ -52,7 +52,6 @@
       <!-- 导航 -->
       <div
         class="navigationList"
-        @click="goHttp(item)"
         v-for="(item, index) in datas.imageList"
         :key="index"
         :style="{
@@ -89,19 +88,12 @@
 <script>
 export default {
   name: 'graphicnavigation',
-  inject: ['reload', 'productJump'],
   props: {
     datas: Object,
   },
   created(){
     console.log(this.datas,'--------graphicnavigation')
-  },
-   methods: {
-    goHttp(res) {
-      this.productJump(res)
-      console.log(res)
-    },
-  },
+  }
 }
 </script>
 

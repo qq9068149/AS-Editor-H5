@@ -3,7 +3,7 @@
     <!-- 样式一 -->
     <section
       class="type0"
-      v-if="datas.rubiksCubeType === 0 || datas.rubiksCubeType === 2"
+      v-show="datas.rubiksCubeType === 0 || datas.rubiksCubeType === 2"
     >
       <div
         v-if="datas.rubiksCubeType === 0"
@@ -21,7 +21,7 @@
         <img
           draggable="false"
           v-if="datas.bakcgroundImg"
-          v-lazy="datas.bakcgroundImg"
+          :src="datas.bakcgroundImg"
           alt=""
         />
         <img
@@ -38,7 +38,7 @@
           <img
             draggable="false"
             v-if="datas.headPortrait"
-            v-lazy="datas.headPortrait"
+            :src="datas.headPortrait"
             alt=""
           />
           <img
@@ -58,7 +58,7 @@
     </section>
 
     <!-- 样式二 -->
-    <section class="type1" v-if="datas.rubiksCubeType === 1">
+    <section class="type1" v-show="datas.rubiksCubeType === 1">
       <div
         class="menban"
         style="background-image: linear-gradient(to top, #000, transparent)"
@@ -68,7 +68,7 @@
         <img
           draggable="false"
           v-if="datas.bakcgroundImg"
-          v-lazy="datas.bakcgroundImg"
+          :src="datas.bakcgroundImg"
           alt=""
         />
         <img
@@ -85,7 +85,7 @@
           <img
             draggable="false"
             v-if="datas.headPortrait"
-            v-lazy="datas.headPortrait"
+            :src="datas.headPortrait"
             alt=""
           />
           <img
@@ -105,7 +105,7 @@
     </section>
 
     <!-- 样式四 -->
-    <section class="type3" v-if="datas.rubiksCubeType === 3">
+    <section class="type3" v-show="datas.rubiksCubeType === 3">
       <div
         class="menban"
         style="background-image: linear-gradient(to top, #000, transparent)"
@@ -115,7 +115,7 @@
         <img
           draggable="false"
           v-if="datas.bakcgroundImg"
-          v-lazy="datas.bakcgroundImg"
+          :src="datas.bakcgroundImg"
           alt=""
         />
         <img
@@ -132,7 +132,7 @@
           <img
             draggable="false"
             v-if="datas.headPortrait"
-            v-lazy="datas.headPortrait"
+            :src="datas.headPortrait"
             alt=""
           />
           <img
@@ -152,7 +152,7 @@
     </section>
 
     <!-- 样式五 -->
-    <section class="type4" v-if="datas.rubiksCubeType === 4">
+    <section class="type4" v-show="datas.rubiksCubeType === 4">
       <div
         class="menban"
         style="background-image: linear-gradient(to top, #000, transparent)"
@@ -162,7 +162,7 @@
         <img
           draggable="false"
           v-if="datas.bakcgroundImg"
-          v-lazy="datas.bakcgroundImg"
+          :src="datas.bakcgroundImg"
           alt=""
         />
         <img
@@ -179,7 +179,7 @@
           <img
             draggable="false"
             v-if="datas.headPortrait"
-            v-lazy="datas.headPortrait"
+            :src="datas.headPortrait"
             alt=""
           />
           <img

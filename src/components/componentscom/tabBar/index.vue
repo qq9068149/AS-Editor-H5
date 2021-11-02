@@ -1,14 +1,13 @@
 <template>
   <div class="tabBar">
     <div v-if="datas.iconList.length !== 0" class="tabbar">
-      <!-- <div class=""></div> -->
       <van-tabbar
-        v-model="Active"
+        v-model="active"
+        :fixed="false"
+        :placeholder="true"
         :border="datas.isShowBorder"
         :active-color="datas.activeColor"
         :inactive-color="datas.inactiveColor"
-        @change="changeTab"
-        replace="true"
       >
         <van-tabbar-item
           v-for="(item, index) in datas.iconList"
@@ -23,11 +22,12 @@
 
     <div v-else>
       <van-tabbar
-        v-model="active"
+        v-model="datas.Highlight"
+        :fixed="false"
+        :placeholder="true"
         :border="datas.isShowBorder"
         :active-color="datas.activeColor"
         :inactive-color="datas.inactiveColor"
-        @change="changeTab"
       >
         <van-tabbar-item icon="search" dot name="home">标签</van-tabbar-item>
         <van-tabbar-item icon="home-o">标签</van-tabbar-item>
@@ -45,48 +45,44 @@
 <script>
 export default {
   name: 'tabBar',
-  inject: ['productJump'],
   props: {
     datas: Object,
   },
   data() {
     return {
-      active: this.datas.Highlight,
+      // active: 'home',
     }
   },
 
   created() {
-    console.log(this.datas, '--------------tabbar data')
+    console.log(this.datas, '--------------tabbar data  created')
+    document.querySelector('.phone-container').style.cssText =
+      'padding-bottom: 50px'
   },
 
   mounted() {},
 
-  methods: {
-    changeTab(index) {
-      if (this.datas.iconList.length !== 0) {
-        console.log(this.datas.iconList[index], '-----------changeTab datas')
-        this.productJump(this.datas.iconList[index])
-      }
-    },
-  },
+  methods: {},
 
-  computed: {
-    Active() {
-      return this.datas.Highlight
-    },
-  },
+  computed: {},
 
   watch: {},
+
+  beforeDestroy() {
+    document.querySelector('.phone-container').style.cssText =
+      'padding-bottom: 0px'
+  },
 }
 </script>
 
 <style lang="less" scoped>
 .tabBar {
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
+  position: relative;
+  position: absolute;
+  bottom: -54px;
+  left: 0px;
+  z-index: 2;
 }
 
 .tabbar {
@@ -98,17 +94,6 @@ export default {
       width: 100%;
       height: 100%;
     }
-  }
-}
-
-/deep/ .van-tabbar {
-  box-shadow: 0px 20px 25px 5px rgba(0, 0, 0);
-  .van-tabbar-item__icon {
-    margin-bottom: 4px;
-  }
-  .van-tabbar-item__text {
-    font-size: 12px;
-    line-height: 1;
   }
 }
 </style>

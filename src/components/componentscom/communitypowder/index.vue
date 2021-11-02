@@ -11,26 +11,17 @@
             alt=""
             v-if="!datas.mainImg"
           />
-          <img draggable="false" v-lazy="datas.mainImg" alt="" v-else />
+          <img draggable="false" :src="datas.mainImg" alt="" v-else />
           <div class="text">
-            <div class="first">{{ datas.title }}</div>
-            <div class="last">{{ datas.describe }}</div>
+            <p class="first">{{ datas.title }}</p>
+            <p class="last">{{ datas.describe }}</p>
           </div>
         </div>
-        <van-button
-          @click="show = true"
-          class="rig"
-          type="danger"
-          size="small"
-          color="#f44"
-          >{{ datas.buttonName }}</van-button
-        >
+        <van-button class="rig" type="danger" size="small" color="#f44">{{
+          datas.buttonName
+        }}</van-button>
       </div>
     </section>
-
-    <van-dialog v-model="show" title="扫码关注">
-      <img v-lazy="datas.qrcodeImg" />
-    </van-dialog>
 
     <!-- 删除组件 -->
     <slot name="deles" />
@@ -42,11 +33,6 @@ export default {
   name: 'communitypowder',
   props: {
     datas: Object,
-  },
-  data() {
-    return {
-      show: false,
-    }
   },
 }
 </script>

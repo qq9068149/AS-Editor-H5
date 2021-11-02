@@ -1,9 +1,9 @@
 <template>
   <div class="phoneBottom">
-    <p class="ft-links" v-if="datas.isShowBootom">
-      <span @click="goHome">店铺主页</span>
-      <span @click="goMine">个人中心</span>
-      <!-- <span @click="$router.push({ path: '/' })">关注我们</span> -->
+    <p class="ft-links" v-show="datas.isShowBootom">
+      <span>店铺主页</span>
+      <span>个人中心</span>
+      <!-- <span>关注我们</span> -->
       <!-- <span>店铺信息</span> -->
     </p>
   </div>
@@ -12,34 +12,10 @@
 <script>
 export default {
   name: 'phoneBottom',
-  props: {
-    datas: String|Object,
-  },
-  created() {},
-  methods: {
-    goHome() {
-      let orgId = window.localStorage.getItem('shopTemplateId')
-      console.log(orgId, '---------------orgId')
-      if (orgId) {
-        this.$router.push({ path: '/shop', query: { orgId: orgId } })
-      } else {
-        localStorage.setItem('shopTemplateId', this.$route.query.orgId)
-        let shopId = this.$route.query.orgId
-        // let shopId = window.global_config.orgId //20200518 生产模板id修改
-        this.$router.push({ path: '/shop', query: { orgId: shopId } })
-      }
-      // let shopId = this.$route.query.orgId
-      // // let shopId = window.global_config.orgId //20200518 生产模板id修改
-      // this.$router.push({ path: '/shop', query: { orgId: shopId } })
-    },
-    goMine() {
-      window.location.href = 'https://app.starfirelink.com/#/mine'
-    },
-  },
+  props:['datas'],
   watch: {
-    datas: function () {
-      this.$store.commit('put_bottomLogo', this.datas)
-      console.log(this.$store.state.bottomLogo,'-------------this.bottomLogo')
+    datas() {
+      // console.log(this.datas,'------------this.datas')
     },
   },
 }
@@ -51,7 +27,6 @@ export default {
   background-color: #fff;
   min-height: 145px;
   cursor: pointer;
-  position: relative;
   padding-top: 30px;
   box-sizing: border-box;
   .ft-links {

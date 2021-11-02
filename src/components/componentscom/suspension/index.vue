@@ -13,7 +13,6 @@
 import drag from './drag'
 export default {
   name: 'suspension',
-  inject: ['productJump'],
   props: {
     datas: Object,
   },
@@ -34,7 +33,6 @@ export default {
   methods: {
     goHttp(res) {
       console.log(this.moveDiv, '--------------moveDiv data')
-      this.productJump(res)
     },
   },
 }

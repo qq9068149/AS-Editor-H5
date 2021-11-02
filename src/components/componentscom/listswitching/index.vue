@@ -4,18 +4,17 @@
     :ref="listSwitchName"
     :style="{ backgroundImage: 'url(' + datas.bgImg + ')' }"
   >
-    <!-- 没有视频展示默认 v-if="showProduct"-->
+    <!-- 没有视频展示默认 -->
     <!-- 类型一 -->
     <div
       class="more"
-      @click="gotoMore"
-      v-if="datas.showMore && datas.commoditylisttype === 0"
+      v-show="datas.showMore && datas.commoditylisttype == 0"
       :style="{ 'margin-right': datas.pageMargin + 'px' }"
     >
       更多》
     </div>
     <section
-      v-if="!datas.imageList[0] && datas.commoditylisttype === 0"
+      v-show="!datas.imageList[0] && datas.commoditylisttype === 0"
       :class="[
         datas.commodityType === 5 ? 'defaultcommodityList5' : '',
         datas.commodityType === 1 ? 'defaultcommodityListFlex' : '',
@@ -43,7 +42,7 @@
           border: datas.moditystyle === 2 ? '1px solid rgba(50,50,51,0.1)' : '',
           'box-shadow':
             datas.moditystyle === 1 ? '0 2px 8px rgba(93,113,127,0.08)' : '',
-          margin: datas.commodityMargin / 42 + 'rem',
+          margin: datas.commodityMargin + 'px',
           width:
             datas.commodityType === 1
               ? 50 - datas.commodityMargin / 6 + '%'
@@ -62,7 +61,6 @@
             src="../../../assets/images/imgs.png"
             alt=""
             :style="{ 'border-radius': datas.borderRadius + 'px' }"
-            style="object-fit: cover"
           />
           <!-- 标签 -->
           <van-tag
@@ -70,21 +68,21 @@
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 0"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 0"
             >新品</van-tag
           >
           <van-tag
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 1"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 1"
             >热<br />卖</van-tag
           >
           <van-tag
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 2"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 2"
             >NEW</van-tag
           >
           <van-tag
@@ -92,7 +90,7 @@
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 3"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 3"
             >HOT</van-tag
           >
         </div>
@@ -124,38 +122,38 @@
             这里显示商品描述，最多显示1行
           </p>
           <div class="mony">
-            <span v-if="datas.priceofcommodity"><i>￥</i>99</span>
-            <div v-if="datas.purchasebutton">
+            <span v-show="datas.priceofcommodity"><i>￥</i>99</span>
+            <div v-show="datas.purchasebutton">
               <van-icon
                 name="cart-circle-o"
                 size="23"
-                v-if="datas.purchasebuttonType === 0"
+                v-show="datas.purchasebuttonType === 0"
               />
               <van-icon
                 name="add-o"
                 size="23"
-                v-if="datas.purchasebuttonType === 1"
+                v-show="datas.purchasebuttonType === 1"
               />
               <van-icon
                 name="add"
                 size="23"
-                v-if="datas.purchasebuttonType === 2"
+                v-show="datas.purchasebuttonType === 2"
               />
               <van-icon
                 name="cart-o"
                 size="23"
-                v-if="datas.purchasebuttonType === 3"
+                v-show="datas.purchasebuttonType === 3"
               />
-              <em v-if="datas.purchasebuttonType === 4">{{
+              <em v-show="datas.purchasebuttonType === 4">{{
                 datas.purchase
               }}</em>
-              <em v-if="datas.purchasebuttonType === 5">{{
+              <em v-show="datas.purchasebuttonType === 5">{{
                 datas.purchase
               }}</em>
-              <em v-if="datas.purchasebuttonType === 6">{{
+              <em v-show="datas.purchasebuttonType === 6">{{
                 datas.purchase
               }}</em>
-              <em v-if="datas.purchasebuttonType === 7">{{
+              <em v-show="datas.purchasebuttonType === 7">{{
                 datas.purchase
               }}</em>
             </div>
@@ -165,7 +163,7 @@
     </section>
 
     <section
-      v-if="datas.imageList[0] && datas.commoditylisttype === 0"
+      v-show="datas.imageList[0] && datas.commoditylisttype === 0"
       :class="[
         datas.commodityType === 5 ? 'defaultcommodityList5' : '',
         datas.commodityType === 1 ? 'defaultcommodityListFlex' : '',
@@ -180,7 +178,6 @@
       <div
         v-for="(item, index) in datas.imageList"
         :key="index"
-        @click="goHttp(item)"
         class="defaultcommodityList"
         :class="[
           datas.commodityType === 0 ? 'defaultcommodityList0' : '',
@@ -194,7 +191,7 @@
           border: datas.moditystyle === 2 ? '1px solid rgba(50,50,51,0.1)' : '',
           'box-shadow':
             datas.moditystyle === 1 ? '0 2px 8px rgba(93,113,127,0.08)' : '',
-          margin: datas.commodityMargin / 42 + 'rem',
+          margin: datas.commodityMargin + 'px',
           width:
             datas.commodityType === 1
               ? 50 - datas.commodityMargin / 6 + '%'
@@ -208,12 +205,17 @@
       >
         <!-- 视频图片 -->
         <div class="bg-pic">
-          <img
+          <!-- <img
             draggable="false"
-            v-lazy="item.coverUrl"
+            :src="item | getCommodityItemData('coverUrl')"
             alt=""
             :style="{ 'border-radius': datas.borderRadius + 'px' }"
-            style="object-fit: cover"
+          /> -->
+          <img
+            draggable="false"
+            :src="item.coverUrl"
+            alt=""
+            :style="{ 'border-radius': datas.borderRadius + 'px' }"
           />
           <!-- 标签 -->
           <van-tag
@@ -221,21 +223,21 @@
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 0"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 0"
             >新品</van-tag
           >
           <van-tag
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 1"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 1"
             >热<br />卖</van-tag
           >
           <van-tag
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 2"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 2"
             >NEW</van-tag
           >
           <van-tag
@@ -243,7 +245,7 @@
             :color="datas.commodityTagColor || tagColor"
             :style="styleString"
             class="marks"
-            v-if="datas.commoditycorner && datas.commoditycornertype === 3"
+            v-show="datas.commoditycorner && datas.commoditycornertype === 3"
             >HOT</van-tag
           >
         </div>
@@ -265,6 +267,7 @@
             }"
           >
             {{ item.name }}
+            <!-- {{ item | getCommodityItemData('name') }} -->
           </h5>
           <!-- 视频描述 -->
           <p
@@ -273,43 +276,48 @@
             }"
           >
             {{ item.introduce }}
+            <!-- {{ item | getCommodityItemData('introduce') }} -->
           </p>
           <div
             class="mony"
             v-if="datas.priceofcommodity || datas.purchasebutton"
           >
-            <span v-if="datas.priceofcommodity"><i>￥</i>{{ item.price }}</span>
-            <div v-if="datas.purchasebutton">
+            <span v-show="datas.priceofcommodity"
+              ><i>￥</i>
+              {{ item.price }}
+              <!-- {{ item | getCommodityItemData('price') }} -->
+            </span>
+            <div v-show="datas.purchasebutton">
               <van-icon
                 name="cart-circle-o"
                 size="23"
-                v-if="datas.purchasebuttonType === 0"
+                v-show="datas.purchasebuttonType === 0"
               />
               <van-icon
                 name="add-o"
                 size="23"
-                v-if="datas.purchasebuttonType === 1"
+                v-show="datas.purchasebuttonType === 1"
               />
               <van-icon
                 name="add"
                 size="23"
-                v-if="datas.purchasebuttonType === 2"
+                v-show="datas.purchasebuttonType === 2"
               />
               <van-icon
                 name="cart-o"
                 size="23"
-                v-if="datas.purchasebuttonType === 3"
+                v-show="datas.purchasebuttonType === 3"
               />
-              <em v-if="datas.purchasebuttonType === 4">{{
+              <em v-show="datas.purchasebuttonType === 4">{{
                 datas.purchase
               }}</em>
-              <em v-if="datas.purchasebuttonType === 5">{{
+              <em v-show="datas.purchasebuttonType === 5">{{
                 datas.purchase
               }}</em>
-              <em v-if="datas.purchasebuttonType === 6">{{
+              <em v-show="datas.purchasebuttonType === 6">{{
                 datas.purchase
               }}</em>
-              <em v-if="datas.purchasebuttonType === 7">{{
+              <em v-show="datas.purchasebuttonType === 7">{{
                 datas.purchase
               }}</em>
             </div>
@@ -322,18 +330,17 @@
     <div class="tab-type2">
       <div
         class="more"
-        @click="gotoMore"
-        v-if="datas.showMore && datas.commoditylisttype == 1"
+        v-show="datas.showMore && datas.commoditylisttype == 1"
         :style="{
           'margin-right': datas.pageMargin + 'px',
-          'margin-top': '10px',
+          'margin-top': '0px',
         }"
       >
         更多》
       </div>
       <van-tabs
-        v-model="active"
-        v-if="datas.commoditylisttype === 1"
+        v-model="active1"
+        v-show="datas.commoditylisttype === 1"
         animated
         swipeable
         :color="datas.tabColor"
@@ -349,7 +356,7 @@
           }"
         >
           <section
-            v-if="!item.imageList[0] && datas.commoditylisttype === 1"
+            v-show="!item.imageList[0] && datas.commoditylisttype === 1"
             :class="[datas.commodityType === 5 ? 'defaultcommodityList5' : '']"
             class="defaultcommodity"
             :style="{
@@ -377,7 +384,7 @@
                   datas.moditystyle === 1
                     ? '0 2px 8px rgba(93,113,127,0.08)'
                     : '',
-                margin: datas.commodityMargin / 42 + 'rem',
+                margin: datas.commodityMargin + 'px',
                 width:
                   datas.commodityType === 1
                     ? 50 - datas.commodityMargin / 6 + '%'
@@ -396,7 +403,6 @@
                   src="../../../assets/images/imgs.png"
                   alt=""
                   :style="{ 'border-radius': datas.borderRadius + 'px' }"
-                  style="object-fit: cover"
                 />
                 <!-- 标签 -->
                 <van-tag
@@ -404,7 +410,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 0
                   "
                   >新品</van-tag
@@ -413,7 +419,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 1
                   "
                   >热<br />卖</van-tag
@@ -422,7 +428,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 2
                   "
                   >NEW</van-tag
@@ -432,7 +438,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 3
                   "
                   >HOT</van-tag
@@ -466,38 +472,38 @@
                   这里显示商品描述，最多显示1行
                 </p>
                 <div class="mony">
-                  <span v-if="datas.priceofcommodity"><i>￥</i>99</span>
-                  <div v-if="datas.purchasebutton">
+                  <span v-show="datas.priceofcommodity"><i>￥</i>99</span>
+                  <div v-show="datas.purchasebutton">
                     <van-icon
                       name="cart-circle-o"
                       size="23"
-                      v-if="datas.purchasebuttonType === 0"
+                      v-show="datas.purchasebuttonType === 0"
                     />
                     <van-icon
                       name="add-o"
                       size="23"
-                      v-if="datas.purchasebuttonType === 1"
+                      v-show="datas.purchasebuttonType === 1"
                     />
                     <van-icon
                       name="add"
                       size="23"
-                      v-if="datas.purchasebuttonType === 2"
+                      v-show="datas.purchasebuttonType === 2"
                     />
                     <van-icon
                       name="cart-o"
                       size="23"
-                      v-if="datas.purchasebuttonType === 3"
+                      v-show="datas.purchasebuttonType === 3"
                     />
-                    <em v-if="datas.purchasebuttonType === 4">{{
+                    <em v-show="datas.purchasebuttonType === 4">{{
                       datas.purchase
                     }}</em>
-                    <em v-if="datas.purchasebuttonType === 5">{{
+                    <em v-show="datas.purchasebuttonType === 5">{{
                       datas.purchase
                     }}</em>
-                    <em v-if="datas.purchasebuttonType === 6">{{
+                    <em v-show="datas.purchasebuttonType === 6">{{
                       datas.purchase
                     }}</em>
-                    <em v-if="datas.purchasebuttonType === 7">{{
+                    <em v-show="datas.purchasebuttonType === 7">{{
                       datas.purchase
                     }}</em>
                   </div>
@@ -506,7 +512,7 @@
             </div>
           </section>
           <section
-            v-if="item.imageList[0] && datas.commoditylisttype === 1"
+            v-show="item.imageList[0] && datas.commoditylisttype === 1"
             :class="[datas.commodityType === 5 ? 'defaultcommodityList5' : '']"
             class="defaultcommodity"
             :style="{
@@ -518,7 +524,6 @@
             <div
               v-for="(item, index) in item.imageList"
               :key="index"
-              @click="goHttp(item)"
               class="defaultcommodityList"
               :class="[
                 datas.commodityType === 0 ? 'defaultcommodityList0' : '',
@@ -535,7 +540,7 @@
                   datas.moditystyle === 1
                     ? '0 2px 8px rgba(93,113,127,0.08)'
                     : '',
-                margin: datas.commodityMargin / 42 + 'rem',
+                margin: datas.commodityMargin + 'px',
                 width:
                   datas.commodityType === 1
                     ? 50 - datas.commodityMargin / 6 + '%'
@@ -549,12 +554,17 @@
             >
               <!-- 视频图片 -->
               <div class="bg-pic">
-                <img
+                <!-- <img
                   draggable="false"
-                  v-lazy="item.coverUrl"
+                  :src="item | getCommodityItemData('coverUrl')"
                   alt=""
                   :style="{ 'border-radius': datas.borderRadius + 'px' }"
-                  style="object-fit: cover"
+                /> -->
+                <img
+                  draggable="false"
+                  :src="item.coverUrl"
+                  alt=""
+                  :style="{ 'border-radius': datas.borderRadius + 'px' }"
                 />
                 <!-- 标签 -->
                 <van-tag
@@ -562,7 +572,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 0
                   "
                   >新品</van-tag
@@ -571,7 +581,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 1
                   "
                   >热<br />卖</van-tag
@@ -580,7 +590,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 2
                   "
                   >NEW</van-tag
@@ -590,7 +600,7 @@
                   :color="datas.commodityTagColor || tagColor"
                   :style="styleString"
                   class="marks"
-                  v-if="
+                  v-show="
                     datas.commoditycorner && datas.commoditycornertype === 3
                   "
                   >HOT</van-tag
@@ -614,6 +624,7 @@
                   }"
                 >
                   {{ item.name }}
+                  <!-- {{ item | getCommodityItemData('name') }} -->
                 </h5>
                 <!-- 视频描述 -->
                 <p
@@ -622,45 +633,48 @@
                   }"
                 >
                   {{ item.introduce }}
+                  <!-- {{ item | getCommodityItemData('introduce') }} -->
                 </p>
                 <div
                   class="mony"
                   v-if="datas.priceofcommodity || datas.purchasebutton"
                 >
-                  <span v-if="datas.priceofcommodity"
-                    ><i>￥</i>{{ item.price }}</span
-                  >
-                  <div v-if="datas.purchasebutton">
+                  <span v-show="datas.priceofcommodity"
+                    ><i>￥</i>
+                    {{ item.price }}
+                    <!-- {{ item | getCommodityItemData('price') }} -->
+                  </span>
+                  <div v-show="datas.purchasebutton">
                     <van-icon
                       name="cart-circle-o"
                       size="23"
-                      v-if="datas.purchasebuttonType === 0"
+                      v-show="datas.purchasebuttonType === 0"
                     />
                     <van-icon
                       name="add-o"
                       size="23"
-                      v-if="datas.purchasebuttonType === 1"
+                      v-show="datas.purchasebuttonType === 1"
                     />
                     <van-icon
                       name="add"
                       size="23"
-                      v-if="datas.purchasebuttonType === 2"
+                      v-show="datas.purchasebuttonType === 2"
                     />
                     <van-icon
                       name="cart-o"
                       size="23"
-                      v-if="datas.purchasebuttonType === 3"
+                      v-show="datas.purchasebuttonType === 3"
                     />
-                    <em v-if="datas.purchasebuttonType === 4">{{
+                    <em v-show="datas.purchasebuttonType === 4">{{
                       datas.purchase
                     }}</em>
-                    <em v-if="datas.purchasebuttonType === 5">{{
+                    <em v-show="datas.purchasebuttonType === 5">{{
                       datas.purchase
                     }}</em>
-                    <em v-if="datas.purchasebuttonType === 6">{{
+                    <em v-show="datas.purchasebuttonType === 6">{{
                       datas.purchase
                     }}</em>
-                    <em v-if="datas.purchasebuttonType === 7">{{
+                    <em v-show="datas.purchasebuttonType === 7">{{
                       datas.purchase
                     }}</em>
                   </div>
@@ -677,8 +691,7 @@
     <div>
       <div
         class="more"
-        @click="gotoMore"
-        v-if="datas.showMore && datas.commoditylisttype == 2"
+        v-show="datas.showMore && datas.commoditylisttype == 2"
         :style="{
           'margin-right': datas.pageMargin + 'px',
           'margin-top': '0px',
@@ -690,14 +703,15 @@
         height="auto"
         :items="datas.commoditylisttypetab"
         :main-active-index.sync="active"
-        v-if="datas.commoditylisttype === 2"
+        v-show="datas.commoditylisttype === 2"
         class="type3"
         @click-nav="treeSelect"
       >
         <template #content>
           <div v-for="(item, index) in datas.commoditylisttypetab" :key="index">
             <section
-              v-if="(active === index) & !item.imageList[0]"
+              v-if="active === index"
+              v-show="!item.imageList[0]"
               class="defaultcommodity"
               :style="{
                 'padding-top': datas.commodityMargin + 'px',
@@ -718,7 +732,7 @@
                     datas.moditystyle === 1
                       ? '0 2px 8px rgba(93,113,127,0.08)'
                       : '',
-                  margin: datas.commodityMargin / 42 + 'rem',
+                  margin: datas.commodityMargin + 'px',
                   'border-radius': datas.borderRadius + 'px',
                 }"
               >
@@ -729,7 +743,6 @@
                     src="../../../assets/images/imgs.png"
                     alt=""
                     :style="{ 'border-radius': datas.borderRadius + 'px' }"
-                    style="object-fit: cover"
                   />
                   <!-- 标签 -->
                   <van-tag
@@ -737,7 +750,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 0
                     "
                     >新品</van-tag
@@ -746,7 +759,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 1
                     "
                     >热<br />卖</van-tag
@@ -755,7 +768,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 2
                     "
                     >NEW</van-tag
@@ -765,7 +778,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 3
                     "
                     >HOT</van-tag
@@ -801,38 +814,38 @@
                     这里显示商品描述，最多显示1行
                   </p>
                   <div class="mony">
-                    <span v-if="datas.priceofcommodity"><i>￥</i>99</span>
-                    <div v-if="datas.purchasebutton">
+                    <span v-show="datas.priceofcommodity"><i>￥</i>99</span>
+                    <div v-show="datas.purchasebutton">
                       <van-icon
                         name="cart-circle-o"
                         size="23"
-                        v-if="datas.purchasebuttonType === 0"
+                        v-show="datas.purchasebuttonType === 0"
                       />
                       <van-icon
                         name="add-o"
                         size="23"
-                        v-if="datas.purchasebuttonType === 1"
+                        v-show="datas.purchasebuttonType === 1"
                       />
                       <van-icon
                         name="add"
                         size="23"
-                        v-if="datas.purchasebuttonType === 2"
+                        v-show="datas.purchasebuttonType === 2"
                       />
                       <van-icon
                         name="cart-o"
                         size="23"
-                        v-if="datas.purchasebuttonType === 3"
+                        v-show="datas.purchasebuttonType === 3"
                       />
-                      <em v-if="datas.purchasebuttonType === 4">{{
+                      <em v-show="datas.purchasebuttonType === 4">{{
                         datas.purchase
                       }}</em>
-                      <em v-if="datas.purchasebuttonType === 5">{{
+                      <em v-show="datas.purchasebuttonType === 5">{{
                         datas.purchase
                       }}</em>
-                      <em v-if="datas.purchasebuttonType === 6">{{
+                      <em v-show="datas.purchasebuttonType === 6">{{
                         datas.purchase
                       }}</em>
-                      <em v-if="datas.purchasebuttonType === 7">{{
+                      <em v-show="datas.purchasebuttonType === 7">{{
                         datas.purchase
                       }}</em>
                     </div>
@@ -840,7 +853,6 @@
                 </div>
               </div>
             </section>
-            <!--  -->
             <section
               v-if="active === index"
               v-show="item.imageList[0]"
@@ -854,7 +866,6 @@
               <div
                 v-for="(item, index) in item.imageList"
                 :key="index"
-                @click="goHttp(item)"
                 class="defaultcommodityList defaultcommodityList3"
                 :style="{
                   border:
@@ -865,18 +876,23 @@
                     datas.moditystyle === 1
                       ? '0 2px 8px rgba(93,113,127,0.08)'
                       : '',
-                  margin: datas.commodityMargin / 42 + 'rem',
+                  margin: datas.commodityMargin + 'px',
                   'border-radius': datas.borderRadius + 'px',
                 }"
               >
                 <!-- 视频图片 -->
                 <div class="bg-pic">
-                  <img
+                  <!-- <img
                     draggable="false"
-                    v-lazy="item.coverUrl"
+                    :src="item | getCommodityItemData('coverUrl')"
                     alt=""
                     :style="{ 'border-radius': datas.borderRadius + 'px' }"
-                    style="object-fit: cover"
+                  /> -->
+                  <img
+                    draggable="false"
+                    :src="item.coverUrl"
+                    alt=""
+                    :style="{ 'border-radius': datas.borderRadius + 'px' }"
                   />
                   <!-- 标签 -->
                   <van-tag
@@ -884,7 +900,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 0
                     "
                     >新品</van-tag
@@ -893,7 +909,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 1
                     "
                     >热<br />卖</van-tag
@@ -902,7 +918,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 2
                     "
                     >NEW</van-tag
@@ -912,7 +928,7 @@
                     :color="datas.commodityTagColor || tagColor"
                     :style="styleString"
                     class="marks"
-                    v-if="
+                    v-show="
                       datas.commoditycorner && datas.commoditycornertype === 3
                     "
                     >HOT</van-tag
@@ -937,6 +953,7 @@
                     }"
                   >
                     {{ item.name }}
+                    <!-- {{ item | getCommodityItemData('name') }} -->
                   </h5>
                   <!-- 视频描述 -->
                   <p
@@ -946,45 +963,48 @@
                     }"
                   >
                     {{ item.introduce }}
+                    <!-- {{ item | getCommodityItemData('introduce') }} -->
                   </p>
                   <div
                     class="mony"
                     v-if="datas.priceofcommodity || datas.purchasebutton"
                   >
-                    <span v-if="datas.priceofcommodity"
-                      ><i>￥</i>{{ item.price }}</span
-                    >
-                    <div v-if="datas.purchasebutton">
+                    <span v-show="datas.priceofcommodity"
+                      ><i>￥</i>
+                      {{ item.price }}
+                      <!-- {{ item | getCommodityItemData('price') }} -->
+                    </span>
+                    <div v-show="datas.purchasebutton">
                       <van-icon
                         name="cart-circle-o"
                         size="23"
-                        v-if="datas.purchasebuttonType === 0"
+                        v-show="datas.purchasebuttonType === 0"
                       />
                       <van-icon
                         name="add-o"
                         size="23"
-                        v-if="datas.purchasebuttonType === 1"
+                        v-show="datas.purchasebuttonType === 1"
                       />
                       <van-icon
                         name="add"
                         size="23"
-                        v-if="datas.purchasebuttonType === 2"
+                        v-show="datas.purchasebuttonType === 2"
                       />
                       <van-icon
                         name="cart-o"
                         size="23"
-                        v-if="datas.purchasebuttonType === 3"
+                        v-show="datas.purchasebuttonType === 3"
                       />
-                      <em v-if="datas.purchasebuttonType === 4">{{
+                      <em v-show="datas.purchasebuttonType === 4">{{
                         datas.purchase
                       }}</em>
-                      <em v-if="datas.purchasebuttonType === 5">{{
+                      <em v-show="datas.purchasebuttonType === 5">{{
                         datas.purchase
                       }}</em>
-                      <em v-if="datas.purchasebuttonType === 6">{{
+                      <em v-show="datas.purchasebuttonType === 6">{{
                         datas.purchase
                       }}</em>
-                      <em v-if="datas.purchasebuttonType === 7">{{
+                      <em v-show="datas.purchasebuttonType === 7">{{
                         datas.purchase
                       }}</em>
                     </div>
@@ -1003,63 +1023,37 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'listswitching',
   props: {
     datas: Object,
   },
-  inject: ['reload', 'productJump'],
   data() {
     return {
+      active1: 0,
       active: 0,
       listSwitchName: null,
       tagColor: '#07c160',
       styleString: {},
-      showProduct: true, // 显示商品组件
     }
   },
   created() {
-    this.listSwitchName =
-      'listswitching' + document.querySelectorAll('.listswitching').length
-    this.tagPositionStyle()
-    console.log(this.datas, '--------------------listswitching datas')
-    this.initImageList()
+    console.log(this.datas, '--------------listswitching datas')
   },
-
   mounted() {
-    // 只修改 type 类型为 3 的
-    if (this.datas.commoditylisttype === 2) {
-      this.$refs[this.listSwitchName].querySelector(
-        '.van-sidebar-item--select'
-      ).style.borderColor = this.datas.tabColor
-    }
+    this.$nextTick(() => {
+      if (this.$refs[this.listSwitchName]) {
+        this.$refs[this.listSwitchName][0].querySelector(
+          '.van-sidebar-item--select'
+        ).style.borderColor = this.datas.tabColor
+      }
+
+      this.listSwitchName =
+        'listswitching' + document.querySelectorAll('.listswitching').length
+      this.tagPositionStyle()
+    })
   },
   methods: {
-    // 初始化更新imageList数据
-    initImageList() {
-      if (this.datas.commoditylisttype === 0) {
-        this.$common.replaceImageList(this.datas.imageList).length === 0
-          ? (this.showProduct = false)
-          : (this.datas.imageList = this.$common.replaceImageList(
-              this.datas.imageList
-            ))
-      } else if (
-        this.datas.commoditylisttype === 1 ||
-        this.datas.commoditylisttype == 2
-      ) {
-        this.datas.commoditylisttypetab.forEach((item) => {
-          item.imageList = this.$common.replaceImageList(item.imageList)
-        })
-      }
-    },
-
-    // 商品跳转和其他跳转不一样  数据结构不一致
-    goHttp(res) {
-      this.productJump(res)
-    },
-
     // 这里有个bug  当出现多个商品组件且同为类型3时  点击某一个商品组件会无法匹配 .van-sidebar-item 个数
     treeSelect(index) {
       setTimeout(() => {
@@ -1073,7 +1067,7 @@ export default {
         this.$refs[this.listSwitchName].querySelector(
           '.van-sidebar-item--select'
         ).style.borderColor = this.datas.tabColor
-      }, 1000)
+      })
     },
 
     // 处理标记位置
@@ -1081,14 +1075,12 @@ export default {
       this.styleString = {
         position: 'absolute',
       }
-      if (!this.datas.tagPosition) {
-        this.styleString.top = '5px'
-        this.styleString.left = '0px'
-        this.datas.commoditycornertype === 0
-          ? (this.styleString.borderRadius = '0px 10px 10px 0px !important')
-          : ''
-        return
-      }
+      // if(!this.datas.tagPosition) {
+      //   this.styleString.top = '5px'
+      //   this.styleString.left = '0px'
+      //   this.datas.commoditycornertype === 0 ?  this.styleString.borderRadius = '10px 0px 0px 10px !important' : ''
+      //   return
+      // }
       /* '左上',
         '左下',
         '又上',
@@ -1118,30 +1110,29 @@ export default {
           break
       }
     },
-
-    // 点击gengduo
-    gotoMore() {
-      // console.log(this.reload())
-      // return
-      // console.log(this.datas)
-      // console.log(this.datas.moreUrl)
-      // return
-      //  showMore 必须是 true 点击跳转新的模板页
-      this.reload()
-      if (this.datas.showMore) {
-        let orgId = window.localStorage.getItem('shopTemplateId')
-        this.$router.push({
-          path: '/shop',
-          query: { id: this.datas.moreUrl[0], orgId: orgId },
-        })
+  },
+  watch: {
+    'datas.tabColor': function () {
+      this.$refs[this.listSwitchName].querySelector(
+        '.van-tabs__line'
+      ).style.backgroundColor = this.datas.tabColor
+      this.$refs[this.listSwitchName].querySelector(
+        '.van-sidebar-item--select'
+      ).style.borderColor = this.datas.tabColor
+    },
+    'datas.commoditylisttype': function () {
+      if (this.datas.commoditylisttype === 2) {
+        this.$refs[this.listSwitchName].querySelector(
+          '.van-sidebar-item--select'
+        ).style.borderColor = this.datas.tabColor
       }
     },
-  },
-
-  computed: {
-    ...mapGetters({
-      productData: 'getStoreProductData',
-    }),
+    'datas.tagPosition': function () {
+      this.tagPositionStyle()
+    },
+    'datas.commoditycornertype': function () {
+      this.tagPositionStyle()
+    },
   },
 }
 </script>
@@ -1192,7 +1183,7 @@ export default {
       // border: 1px solid #fff;
       &.defaultcommodityList0 {
         width: 100%;
-        height: 340px;
+        // height: 340px;
         margin-left: 0 !important;
         margin-right: 0 !important;
         margin-top: 0 !important;
@@ -1205,7 +1196,7 @@ export default {
         }
       }
       &.defaultcommodityList1 {
-        border: none !important;
+        // border: none !important;
         margin-top: 0 !important;
         &:nth-of-type(even) {
           margin-left: 0 !important;
@@ -1217,17 +1208,12 @@ export default {
         .bg-pic {
           width: 100%;
           height: 120px;
-          img {
-            width: 100%;
-            height: 120px;
-          }
         }
       }
       &.defaultcommodityList2 {
         max-width: 33%;
         margin-top: 0 !important;
         margin-left: 0 !important;
-        box-sizing: border-box;
         &:nth-of-type(3n) {
           margin-right: 0 !important;
         }
@@ -1266,19 +1252,18 @@ export default {
         margin-right: 0 !important;
         margin-top: 0 !important;
         height: 105px;
-        display: inline-block;
+        display: flex;
         .bg-pic {
           width: 40%;
-          height: 105px;
-          float: left;
+          height: 100%;
+          // float: left;
         }
         .text {
           width: 60%;
-          float: right;
+          // float: right;
         }
       }
       &.defaultcommodityList4 {
-        box-sizing: border-box;
         &:nth-of-type(3n-2) {
           width: 100% !important;
           margin-left: 0px !important;
@@ -1306,7 +1291,7 @@ export default {
       }
       &.defaultcommodityList5 {
         width: 100px;
-        height: 160px;
+        // height: 160px;
         margin-top: 0 !important;
         margin-right: 0px !important;
         &:first-of-type {
@@ -1377,7 +1362,7 @@ export default {
       }
       /* 文字 */
       .text {
-        padding: 10px 10px 0;
+        padding: 10px;
         width: 100%;
         box-sizing: border-box;
         height: 100%;
@@ -1445,16 +1430,14 @@ export default {
       }
     }
   }
-  .defaultcommodityListFlex {
+  .defaultcommodityListFlex{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
   }
-
   .tab-type2 {
-    /deep/.van-tab {
-      font-size: 16px;
+    /deep/.van-tabs__wrap {
+      min-height: 44px;
     }
     /deep/.van-tabs__line {
       height: 2px;
@@ -1493,6 +1476,9 @@ export default {
           }
         }
       }
+    }
+    /deep/.van-sidebar-item {
+      font-size: 16px;
     }
   }
 }

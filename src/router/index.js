@@ -5,14 +5,8 @@ Vue.use(VueRouter)
 
 
 const routes = [
-
-  /* {
-    path: '/teacher',   // 讲师
-    name: 'teacher',
-    component: () => import( '../views/teacher.vue')
-  } */
   {
-    path: '/',   // 讲师
+    path: '/',
     name: 'home',
     component: () => import( '@/views/home')
   } 

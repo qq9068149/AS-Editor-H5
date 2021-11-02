@@ -8,9 +8,12 @@
         <span>{{ datas.followName }}</span>
       </div>
       <div class="follow-right">
-        <van-button color="#07C160" @click="follow">关注公众号</van-button>
+        <van-button color="#07C160">关注公众号</van-button>
       </div>
     </div>
+
+    <!-- 删除组件 -->
+    <slot name="deles" />
   </div>
 </template>
 
@@ -20,36 +23,12 @@ export default {
   props: {
     datas: Object,
   },
-  data() {
-    return {}
-  },
-
-  created() {},
-
-  mounted() {},
-
-  methods: {
-    // 关注公众号
-    follow() {
-      let appIdEncode = window.btoa('3882442286')
-      console.log(appIdEncode, '-------app encode')
-      // __biz=后面的字符串，替换成自己公众号的字符串就可以了 Mzk0MjE5NTU0Ng==  
-      // https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg4MjQ0MjI4Ng==&scene=110#wechat_redirect
-      // let url = `https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=${appIdEncode}#wechat_redirect`
-      let url = `https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzk0MjE5NTU0Ng==#wechat_redirect`
-      console.log(url, '-----------url')
-      location.href = url
-    },
-  },
-
-  computed: {},
-
-  watch: {},
 }
 </script>
 
 <style lang="less" scoped>
 #follow {
+  position: relative;
   width: 100%;
   padding: 5px 10px;
   box-sizing: border-box;

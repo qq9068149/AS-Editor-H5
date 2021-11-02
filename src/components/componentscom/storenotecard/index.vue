@@ -3,14 +3,12 @@
     <!-- 更多 -->
     <div class="more1">
       <h4>{{ datas.name }}</h4>
-      <p v-if="datas.viewMore1" @click="goHttp(datas)">
-        查看更多 <van-icon name="arrow" />
-      </p>
+      <p v-show="datas.viewMore1">查看更多 <van-icon name="arrow" /></p>
     </div>
 
     <!-- 没有视频展示默认 -->
     <section
-      v-if="!datas.imageList[0]"
+      v-show="!datas.imageList[0]"
       :class="[datas.commodityType === 2 ? 'defaultcommodityList2' : '']"
       class="defaultcommodity"
     >
@@ -64,7 +62,7 @@
           <div class="dianz">
             <span class="fir" v-if="datas.readingNumber">999 阅读</span>
             <span v-else></span>
-            <span v-if="datas.praisePoints"
+            <span v-show="datas.praisePoints"
               ><van-icon name="good-job-o" /> 999</span
             >
           </div>
@@ -73,7 +71,7 @@
     </section>
 
     <section
-      v-if="datas.imageList[0]"
+      v-show="datas.imageList[0]"
       :class="[datas.commodityType === 2 ? 'defaultcommodityList2' : '']"
       class="defaultcommodity"
     >
@@ -81,7 +79,6 @@
         v-for="(item, index) in datas.imageList"
         :key="index"
         class="defaultcommodityList"
-        @click="goHttps(item)"
         :class="[
           datas.commodityType === 0 ? 'defaultcommodityList0' : '',
           datas.commodityType === 1 ? 'defaultcommodityList1' : '',
@@ -111,7 +108,7 @@
           style="position: relative; width: 100%"
           :class="[datas.positions === 'top' ? 'containoptions' : '']"
         >
-          <img draggable="false" v-lazy="item.src" alt="" />
+          <img draggable="false" :src="item.src" alt="" />
           <!-- 标签 -->
           <p class="marks" v-if="datas.noteLabels"><span>#</span>笔记标签</p>
         </div>
@@ -128,7 +125,7 @@
           <div class="dianz">
             <span class="fir" v-if="datas.readingNumber">999 阅读</span>
             <span v-else></span>
-            <span v-if="datas.praisePoints"
+            <span v-show="datas.praisePoints"
               ><van-icon name="good-job-o" /> 999</span
             >
           </div>
@@ -136,7 +133,7 @@
       </div>
     </section>
 
-    <p @click="goHttp(datas)" class="more2" v-if="datas.viewMore2">
+    <p class="more2" v-show="datas.viewMore2">
       查看更多 <van-icon name="arrow" />
     </p>
 
@@ -151,45 +148,21 @@ export default {
   props: {
     datas: Object,
   },
-  inject: ['reload', 'productJump'],
   data() {
     return {
       active: 0,
     }
   },
+
+  created() {
+    this.initImageList()
+  },
+
   methods: {
-    goHttps(res) {
-      this.productJump(res)
-      // console.log(res)
-      // if(res.http.id || res.http.externalLink){
-      //   switch(res.type) {
-      //     case '1' :    // 视频
-      //       this.$router.push({path:`/videoOnDemand?videoId=${res.http.videoId}&id=${res.http.id}`})
-      //     break;
-      //     case '2' :    // 书籍
-      //       this.$router.push({path:`/videoOnDemand?bookId=${res.http.id}`})
-      //     break;
-      //     case '3' :    // 音频
-      //       this.$router.push({path:`/videoOnDemand?videoId=${res.http.videoId}&type=3&id=${res.http.id}`})
-      //     break;
-      //     case '6' :    // 直播
-      //       this.$router.push({name:'mobileLive', query:{roomId:res.http.id}})
-      //     break;
-      //     case '10' :    // 跳转至历史页面
-      //       this.$router.push({ path: 'shop', query: { id: res.http.id }})
-      //     break;
-      //     case '11' :    // 外链
-      //       window.location.href = res.http.externalLink
-      //     break;
-      //   }
-      // }
-    },
-    goHttp(res) {
-      if (res.linktype && res.http) {
-        //兼容老店铺
-        this.productJump(res)
-      }
-      // this.$toast('店铺升级中敬请期待')
+    // 初始化更新imageList数据
+    initImageList() {
+      this.datas.imageList = this.$utils.replaceImageList(this.datas.imageList)
+      console.log(this.datas.imageList, '------------created imageList')
     },
   },
 }

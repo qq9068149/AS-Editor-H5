@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="captiontext"
-    :style="{ background: datas.backColor }"
-    v-if="datas.name || datas.description"
-  >
+  <div class="captiontext" :style="{ background: datas.backColor }">
     <div
       style="padding: 6px 0"
       :style="{
@@ -46,9 +42,8 @@
 
       <!-- 更多 -->
       <p
-        @click="goHttp()"
         class="more"
-        v-if="datas.more.show"
+        v-show="datas.more.show"
         :class="datas.positions !== 'center' ? 'lef' : ''"
         :style="{
           color: datas.more.type === 0 ? '#38f' : '',
@@ -70,16 +65,6 @@ export default {
   name: 'captiontext',
   props: {
     datas: Object,
-  },
-  methods: {
-    goHttp() {
-      if (!this.datas.more.select.id) return
-      let orgId = window.localStorage.getItem('shopTemplateId')
-      this.$router.push({
-        path: 'shop',
-        query: { id: this.datas.more.select.id, orgId: orgId },
-      })
-    },
   },
 }
 </script>

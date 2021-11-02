@@ -1,14 +1,5 @@
 <template>
   <div
-    @click="
-      $router.push({
-        path: '/search',
-        query: {
-          hotords: JSON.stringify(datas.hotords),
-          isShowSweep: JSON.stringify(datas.sweep),
-        },
-      })
-    "
     class="commoditysearch"
     :style="{
       background: datas.backgroundColor,
@@ -25,8 +16,18 @@
         'border-radius': datas.borderRadius === 0 ? '0px' : '10px',
       }"
     >
-      <van-icon name="search" size="16" :style="{ color: datas.textColor }" />
-      <span :style="{ color: datas.textColor }">搜索商品</span>
+      <div class="search-left">
+        <van-icon name="search" size="16" :style="{ color: datas.textColor }" />
+        <span :style="{ color: datas.textColor }">搜索商品</span>
+      </div>
+      <!-- 扫一扫 -->
+      <div
+        class="sweep"
+        v-show="datas.sweep"
+        :style="{ color: datas.textColor }"
+      >
+        <span>扫一扫</span>
+      </div>
     </section>
 
     <!-- 删除组件 -->
@@ -48,12 +49,21 @@ export default {
   position: relative;
   /* 搜索框 */
   .searchs {
+    position: relative;
     width: 345px;
     min-height: 28px;
     margin: 5px auto;
     display: flex;
     align-items: center;
     font-size: 14px;
+    .search-left {
+      display: flex;
+      align-items: center;
+    }
+    .sweep {
+      position: absolute;
+      right: 10px;
+    }
     i {
       margin: 0 5px;
     }

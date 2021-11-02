@@ -1,7 +1,7 @@
 <template>
   <div class="custommodule">
-    {{ datas.text }}
-
+    {{ datas.demo }}
+    <img :src="datas.img" alt="">
     <!-- 删除组件 -->
     <slot name="deles" />
   </div>
@@ -19,5 +19,8 @@ export default {
 <style scoped lang="less">
 .custommodule {
   position: relative;
+  img{
+    width: 100%;
+  }
 }
 </style>

@@ -8,7 +8,7 @@
       }"
     >
       <div
-        v-if="datas.segmentationtype === 1"
+        v-show="datas.segmentationtype === 1"
         style="height: 1px; width: 100%; border-top-width: 1px"
         :style="{
           'border-top-style': datas.bordertp,

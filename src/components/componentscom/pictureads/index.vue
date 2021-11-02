@@ -1,71 +1,67 @@
 <template>
   <div class="pictureads">
     <!-- 无图片 -->
-    <div class="upload" v-if="!datas.imageList[0]">
+    <div class="upload" v-if="!imageList[0]">
       <i class="iconfont icon-lunbotu"></i>
     </div>
 
     <!-- 一行一个 -->
     <div
-      v-if="datas.imageList[0] && datas.swiperType === 0"
+      v-if="imageList[0] && swiperType === 0"
       class="type0"
       :style="{
         'padding-left': datas.pageMargin + 'px',
         'padding-right': datas.pageMargin + 'px',
       }"
-      ref="swiper"
     >
       <div
-        v-for="(item, index) in datas.imageList"
+        v-for="(item, index) in imageList"
         :key="index"
         class="imgLis"
         :style="{ 'margin-bottom': datas.imageMargin + 'px' }"
-        ref="swiper"
+        @click="clickBanner"
       >
         <!-- 图片 -->
         <img
           :src="item.src"
           draggable="false"
           :style="{ 'border-radius': datas.borderRadius + 'px' }"
-          @click="goHttp(item)"
         />
         <!-- 图片标题 -->
-        <p class="title" v-if="item.text ? true : false">{{ item.text }}</p>
+        <p class="title" v-show="item.text ? true : false">{{ item.text }}</p>
       </div>
     </div>
 
     <!-- 轮播组件 -->
     <div
-      :class="swiperM"
+      class="swiper-container"
       v-if="
-        (datas.imageList[0] && datas.swiperType === 1) ||
-        datas.swiperType === 2 ||
-        datas.swiperType === 3
+        (imageList[0] && swiperType === 1) ||
+        swiperType === 2 ||
+        swiperType === 3
       "
-      ref="swiper"
     >
       <div
         :class="
-          datas.swiperType === 3 && datas.imageList[0]
+          swiperType === 3 && imageList[0]
             ? 'type3 type1 swiper-wrapper type3H'
             : 'swiper-wrapper type1'
         "
       >
         <div
           class="swiper-slide"
-          v-for="(item, index) in datas.imageList"
+          v-for="(item, index) in imageList"
           :key="index"
-          ref="swiper"
         >
           <!-- 图片 -->
           <img
             :src="item.src"
-            alt
+            alt=""
             draggable="false"
             :style="{ 'border-radius': datas.borderRadius + 'px' }"
           />
           <!-- 图片标题 -->
-          <p class="title" v-if="item.text ? true : false">{{ item.text }}</p>
+          <p class="title" v-show="item.text ? true : false">{{ item.text }}</p>
         </div>
       </div>
 
@@ -87,30 +83,56 @@ export default {
   props: {
     datas: Object,
   },
-  inject: ['productJump'],
   data() {
     return {
       mySwiper: null,
-      swiperM: 'swiper-container',
     }
   },
-  created(){
-    console.log(this.datas,'-------pictureads')
+  computed: {
+    /* 类型切换 */
+    swiperType() {
+      console.log(this.datas.swiperType, '----------------轮播类型')
+      this.addSwiper()
+      return this.datas.swiperType
+    },
+    /* 图片删除或者增加 */
+    imageList() {
+      this.addSwiper()
+      console.log(this.datas.imageList.length, '-------轮播数量')
+      return this.datas.imageList
+    },
+    /* 分页器类型切换 */
+    pagingType() {
+      this.addSwiper()
+      return this.datas.pagingType
+    },
+    /* 一行个数 */
+    rowindividual() {
+      this.addSwiper()
+      if (this.datas.swiperType === 1) {
+        return 1
+      } else {
+        return this.datas.rowindividual
+      }
+    },
+    /* 图片间距 */
+    imageMargin() {
+      this.addSwiper()
+      if (this.datas.swiperType === 1) {
+        return 0
+      } else {
+        return this.datas.imageMargin
+      }
+    },
   },
-  mounted() {
-    this.addSwiper()
-    this.swiperM =
-      this.swiperM +
-      Math.floor(Math.random() * 1000) +
-      Math.floor(Math.random() * 1000)
+  watch: {
+    pagingType() {},
+    rowindividual() {},
+    imageMargin() {},
   },
   methods: {
-    goHttp(res) {
-      this.productJump(res)
-    },
     /* 创建轮播对象 */
     addSwiper() {
-      let _this = this
       this.$nextTick(() => {
         if (this.datas.swiperType !== 0 && this.datas.imageList[0]) {
           if (this.mySwiper instanceof Array) {
@@ -121,30 +143,25 @@ export default {
             // 每次重新创建swiper前都要销毁之前存在的轮播   不然轮播会重复
             this.mySwiper.destroy()
           }
-          const params = {
+
+          let params = {
             loop: true,
             autoplay: true,
-            preventClicks: true,
-            preventClicksPropagation: true,
             pagination: {
               el: '.swiper-pagination',
-              type: this.datas.pagingType,
-            },
-            on: {
-              click: function () {
-                let realIndex = this.realIndex
-                _this.goHttp(_this.datas.imageList[realIndex])
-              },
+              type: this.pagingType,
             },
           }
-          if (this.datas.swiperType === 2) {
-            params.slidesPerView = this.datas.rowindividual
-            params.spaceBetween = this.datas.imageMargin
+
+          if (this.datas.swiperType === 1 || this.datas.swiperType === 2) {
+            params.slidesPerView = this.rowindividual
+            params.spaceBetween = this.imageMargin
           } else if (this.datas.swiperType === 3) {
             params.slidesPerView = 1.3
             params.centeredSlides = true
           }
-          this.mySwiper = new Swiper('.' + this.swiperM, params)
+
+          this.mySwiper = new Swiper('.swiper-container', params)
         } else {
           if (this.mySwiper instanceof Array) {
             this.mySwiper.forEach((element) => {
@@ -158,6 +175,9 @@ export default {
         }
       })
     },
+    clickBanner(){
+      this.$emit('clickBanner')
+    }
   },
 }
 </script>

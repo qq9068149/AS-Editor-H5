@@ -8,16 +8,16 @@
   >
     <img
       draggable="false"
-      v-if="!showimageList"
+      v-show="!showimageList"
       src="../../../assets/images/mor.png"
       alt=""
-      style="box-sizing: border-box; width: 100%"
+      style="width: 100%"
     />
 
     <!-- 一行二个 -->
     <section
       class="buju buju0"
-      v-if="datas.rubiksCubeType === 0 && showimageList"
+      v-show="datas.rubiksCubeType === 0 && showimageList"
     >
       <div
         v-for="index in 2"
@@ -26,10 +26,8 @@
       >
         <img
           draggable="false"
-          @click="goHttp(datas.imageList[index - 1])"
-          v-lazy="datas.imageList[index - 1].src"
+          :src="datas.imageList[index - 1].src"
           alt=""
-          style="box-sizing: border-box"
           :style="{ padding: datas.imgMargin / 2 + 'px' }"
         />
       </div>
@@ -38,56 +36,44 @@
     <!-- 一行三个 -->
     <section
       class="buju buju0"
-      v-if="datas.rubiksCubeType === 1 && showimageList"
+      v-show="datas.rubiksCubeType === 1 && showimageList"
     >
       <div
         v-for="index in 3"
         :key="index"
         class="rubiksCubeType1 rubiksCubeType"
-        style="box-sizing: border-box"
         :style="{
           margin: datas.imgMargin / 10 + '%',
           width: 33.33 + '%',
         }"
       >
-      <!-- width: 33 - datas.imgMargin / 10 + '%', -->
-        <img
-          draggable="false"
-          @click="goHttp(datas.imageList[index - 1])"
-          v-lazy="datas.imageList[index - 1].src"
-          alt=""
-        />
+      <!--    width: 33 - datas.imgMargin / 10 + '%', -->
+        <img draggable="false" :src="datas.imageList[index - 1].src" alt="" />
       </div>
     </section>
 
     <!-- 一行四个 -->
     <section
       class="buju buju0"
-      v-if="datas.rubiksCubeType === 2 && showimageList"
+      v-show="datas.rubiksCubeType === 2 && showimageList"
     >
       <div
         v-for="index in 4"
         :key="index"
         class="rubiksCubeType2 rubiksCubeType"
-        style="box-sizing: border-box"
         :style="{
           margin: datas.imgMargin / 10 + '%',
           width: 25 - datas.imgMargin / 10 + '%',
         }"
       >
-        <img
-          draggable="false"
-          @click="goHttp(datas.imageList[index - 1])"
-          v-lazy="datas.imageList[index - 1].src"
-          alt=""
-        />
+        <img draggable="false" :src="datas.imageList[index - 1].src" alt="" />
       </div>
     </section>
 
     <!-- 二左二右 -->
     <section
       class="buju buju0"
-      v-if="datas.rubiksCubeType === 3 && showimageList"
+      v-show="datas.rubiksCubeType === 3 && showimageList"
     >
       <div
         v-for="index in 4"
@@ -96,10 +82,8 @@
       >
         <img
           draggable="false"
-          @click="goHttp(datas.imageList[index - 1])"
-          v-lazy="datas.imageList[index - 1].src"
+          :src="datas.imageList[index - 1].src"
           alt=""
-          style="box-sizing: border-box"
           :style="{ padding: datas.imgMargin + 'px' }"
         />
       </div>
@@ -108,32 +92,30 @@
     <!-- 一左二右 -->
     <section
       class="buju buju4"
-      v-if="datas.rubiksCubeType === 4 && showimageList"
+      v-show="datas.rubiksCubeType === 4 && showimageList"
     >
       <div class="rubiksCubeType hw" style="padding-top: 100%">
         <img
           draggable="false"
-          @click="goHttp(datas.imageList[0])"
-          v-lazy="datas.imageList[0].src"
+          :src="datas.imageList[0].src"
           alt=""
-          style="box-sizing: border-box;height:300px"
+          style="height:300px"
           :style="{ 'padding-right': datas.imgMargin + 'px' }"
         />
       </div>
       <div style="display: inline-flex; flex-direction: column; width: 100%">
         <div
-          class="rubiksCubeType hw imgone"
+          class=" hw imgone"
           v-for="index in 2"
           :key="index"
           style="padding-top: 150px;height:150px"
         >
           <img
             draggable="false"
-            @click="goHttp(datas.imageList[index])"
-            v-lazy="datas.imageList[index].src"
+            :src="datas.imageList[index].src"
             alt=""
-            style="box-sizing: border-box;height:150px"
-            :style="{ padding: datas.imgMargin + 'px' }"
+            style="height:150px"
+            :style="{ padding: datas.imgMargin + 'px'}"
           />
         </div>
       </div>
@@ -142,15 +124,13 @@
     <!-- 一上二下 -->
     <section
       class="buju buju5"
-      v-if="datas.rubiksCubeType === 5 && showimageList"
+      v-show="datas.rubiksCubeType === 5 && showimageList"
     >
       <div class="rubiksCubeType hw" style="display: block; padding-top: 50%">
         <img
           draggable="false"
-          @click="goHttp(datas.imageList[0])"
-          v-lazy="datas.imageList[0].src"
+          :src="datas.imageList[0].src"
           alt=""
-          style="box-sizing: border-box"
           :style="{ 'padding-bottom': datas.imgMargin + 'px' }"
         />
       </div>
@@ -163,10 +143,8 @@
         >
           <img
             draggable="false"
-            @click="goHttp(datas.imageList[index])"
-            v-lazy="datas.imageList[index].src"
+            :src="datas.imageList[index].src"
             alt=""
-            style="box-sizing: border-box"
             :style="{ padding: datas.imgMargin + 'px' }"
           />
         </div>
@@ -176,16 +154,15 @@
     <!-- 一左三右 -->
     <section
       class="buju buju4"
-      v-if="datas.rubiksCubeType === 6 && showimageList"
+      v-show="datas.rubiksCubeType === 6 && showimageList"
     >
       <!-- 第一张图片 -->
       <div class="rubiksCubeType hw" style="padding-top: 100%">
         <img
           draggable="false"
-          @click="goHttp(datas.imageList[0])"
-          v-lazy="datas.imageList[0].src"
+          :src="datas.imageList[0].src"
           alt=""
-          style="box-sizing: border-box;height:300px"
+          style="height:300px"
           :style="{ 'padding-right': datas.imgMargin + 'px' }"
         />
       </div>
@@ -194,10 +171,8 @@
         <div class="rubiksCubeType hw" style="padding-top: 150px">
           <img
             draggable="false"
-            @click="goHttp(datas.imageList[1])"
-            v-lazy="datas.imageList[1].src"
+            :src="datas.imageList[1].src"
             alt=""
-            style="box-sizing: border-box"
             :style="{
               'padding-bottom': datas.imgMargin + 'px',
               'padding-left': datas.imgMargin + 'px',
@@ -218,10 +193,9 @@
           >
             <img
               draggable="false"
-              @click="goHttp(datas.imageList[index + 1])"
-              v-lazy="datas.imageList[index + 1].src"
+              :src="datas.imageList[index + 1].src"
               alt=""
-              style="box-sizing: border-box;height:150px"
+              style="height:150px"
               :style="{
                 'padding-left': datas.imgMargin + 'px',
                 'padding-top': datas.imgMargin + 'px',
@@ -240,37 +214,8 @@
 <script>
 export default {
   name: 'magiccube',
-  inject: ['reload', 'productJump'],
   props: {
     datas: Object,
-  },
-  methods: {
-    goHttp(res) {
-      this.productJump(res)
-      // console.log(res)
-      // if(res.http.id || res.http.externalLink){
-      //   switch(res.type) {
-      //     case '1' :    // 视频
-      //       this.$router.push({path:`/videoOnDemand?videoId=${res.http.videoId}&id=${res.http.id}`})
-      //     break;
-      //     case '2' :    // 书籍
-      //       this.$router.push({path:`/videoOnDemand?bookId=${res.http.id}`})
-      //     break;
-      //     case '3' :    // 音频
-      //       this.$router.push({path:`/videoOnDemand?videoId=${res.http.videoId}&type=3&id=${res.http.id}`})
-      //     break;
-      //     case '6' :    // 直播
-      //       this.$router.push({name:'mobileLive', query:{roomId:res.http.id}})
-      //     break;
-      //     case '10' :    // 跳转至历史页面
-      //       this.$router.push({ path: 'shop', query: { id: res.http.id }})
-      //     break;
-      //     case '11' :    // 外链
-      //       window.location.href = res.http.externalLink
-      //     break;
-      //   }
-      // }
-    },
   },
   computed: {
     showimageList() {
@@ -360,6 +305,7 @@ export default {
     &.buju4 {
       display: flex;
       width: 100%;
+      height: 300px;
       flex-direction: row;
       justify-content: space-around;
     }
@@ -376,6 +322,7 @@ export default {
       cursor: pointer;
       &.rubiksCubeType0 {
         width: 50%;
+        // height: 200px;
         &:first-of-type {
           img {
             padding-left: 0 !important;
@@ -392,6 +339,7 @@ export default {
         }
         img {
           width: 100%;
+          // height: 200px;
           display: block;
         }
       }
@@ -414,6 +362,7 @@ export default {
         }
         img {
           width: 100%;
+          height: 150px;
           display: block;
         }
       }
@@ -441,6 +390,7 @@ export default {
         }
         img {
           width: 100%;
+          height: 150px;
           display: block;
         }
       }
@@ -481,8 +431,8 @@ export default {
         }
       }
       &.rubiksCubeType4 {
-        /* width: 187px;
-        height: 187px; */
+        width: 187px;
+        height: 187px;
         img {
           width: 100%;
           height: 100%;

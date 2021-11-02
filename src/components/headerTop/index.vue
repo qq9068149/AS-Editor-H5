@@ -21,13 +21,6 @@
     >
       {{ name.name ? name.name : '' }}
     </div>
-    <!-- 右半部分 -->
-    <!-- 如果name.subhead设置为null则不显示右边，如果设置为""则显示个人中心 ， 如果设置对应的副标题则显示该标题，且跳转对应的urlname路由-->
-    <!-- <div 
-      class="rig"
-      @click="$router.push({ name: name.urlname ? name.urlname : 'personal' })"
-      v-if="!(name.subhead === null)"
-    > -->
     <div
       class="rig"
       @click="$router.push({ name: name.urlname ? name.urlname : 'personal' })"
