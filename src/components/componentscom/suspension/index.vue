@@ -1,12 +1,6 @@
 <template>
   <div id="suspension" @click="goHttp(datas)">
     <drag></drag>
-    <!-- <div class="suspension-wrap" @click="goHttp(datas)">
-      <img
-        class="suspension-logo"
-        src="https://imgs.starfirelink.com/vue-fire-start-h5/shop-peison/icon_back_36.png"
-      />
-    </div> -->
   </div>
 </template>
 <script>
@@ -39,8 +33,6 @@ export default {
 </script>
 <style lang="less" scoped>
 #suspension {
-  width: 36px;
-  height: 36px;
   border: none;
   box-sizing: border-box;
   .suspension-wrap {
