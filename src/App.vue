@@ -24,7 +24,22 @@ export default {
         this.isRouterAlive = true
       })
     },
-  }
+  },
+  mounted() {
+    // 判断是否为移动端
+    if (
+      !navigator.userAgent.match(
+        /(iPhone|iPod|Android|ios|iOS|iPad|Backerry|WebOS|Symbian|Windows Phone|Phone)/i
+      )
+    ) {
+      // pc端的宽度显示设为375px
+      let html = document.querySelector('html')
+      html.style = 'font-size: 37.5px;width: 375px; margin: 0 auto;'
+      window.onresize = () => {
+        html.style = 'font-size: 37.5px;width: 375px; margin: 0 auto;'
+      }
+    }
+  },
 }
 </script>
 <style lang="less">
