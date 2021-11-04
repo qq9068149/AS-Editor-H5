@@ -3,7 +3,8 @@
 #### 介绍
 
 基于 vue 开发的移动端模版，可以通过定义的JSON生成页面。
-与 [AS-Editor](https://gitee.com/was666/as-editor.git) 一起使用可以可视化生成vue页面
+
+与 [AS-Editor](https://gitee.com/was666/as-editor.git) 一起使用可以简单生成vue页面
 
 AS-Editor链接：[https://gitee.com/was666/as-editor.git](https://gitee.com/was666/as-editor.git)
 
@@ -32,3 +33,8 @@ AS-Editor链接：[https://gitee.com/was666/as-editor.git](https://gitee.com/was
 4.  新建 Pull Request
 
 
+#### 结尾
+
+##### 如果喜欢的话给个 star 一下哈！
+
+##### 如果有意见和问题 可以在 lssues 提出，我会在线解答。
