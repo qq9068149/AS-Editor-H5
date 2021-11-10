@@ -19,7 +19,6 @@
         :key="index"
         class="imgLis"
         :style="{ 'margin-bottom': datas.imageMargin + 'px' }"
-        @click="clickBanner"
       >
         <!-- 图片 -->
         <img
@@ -175,9 +174,6 @@ export default {
         }
       })
     },
-    clickBanner(){
-      this.$emit('clickBanner')
-    }
   },
 }
 </script>

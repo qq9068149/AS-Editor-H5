@@ -1,43 +1,40 @@
 <template>
-  <div id="suspension" @click="goHttp(datas)">
-    <drag></drag>
+  <div id="suspension">
+    <div class="suspension-wrap">
+      <img
+        class="suspension-logo"
+        src="https://imgs.starfirelink.com/vue-fire-start-h5/shop-peison/icon_back_36.png"
+      />
+    </div>
+    <!-- 删除组件 -->
+    <slot name="deles" />
   </div>
 </template>
 <script>
-import drag from './drag'
 export default {
   name: 'suspension',
   props: {
     datas: Object,
   },
-  components: {
-    drag,
-  },
-  data() {
-    return {}
-  },
-
-  created() {
-    console.log(this.datas, '--------------suspension data')
-  },
-  mounted() {
-    this.moveDiv = this.$refs.moveDiv
-    console.log(this.moveDiv, '--------------moveDiv data')
-  },
-  methods: {
-    goHttp(res) {
-      console.log(this.moveDiv, '--------------moveDiv data')
-    },
-  },
 }
 </script>
 <style lang="less" scoped>
 #suspension {
+  width: 100%;
+  height: 36px;
+  position: relative;
+  position: absolute;
+  right: 0;
+  bottom: 10%;
+  z-index: 999;
   border: none;
   box-sizing: border-box;
   .suspension-wrap {
     width: 36px;
     height: 36px;
+    position: absolute;
+    right: 30px;
+    z-index: 1001;
     .suspension-logo {
       width: 36px;
       height: 36px;

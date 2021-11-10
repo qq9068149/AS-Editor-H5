@@ -28,8 +28,6 @@
               />
             </keep-alive>
           </template>
-          <!-- 底部 -->
-          <phoneBottom :datas="pageSetup.bottomLogo" />
         </section>
       </van-pull-refresh>
     </section>
@@ -37,7 +35,6 @@
 </template>
 
 <script>
-import phoneBottom from 'components/phoneBottom' // 手机底部
 import headerTop from 'components/headerTop'
 import collect from 'components/collect'
 
@@ -54,7 +51,6 @@ import {
   entertheshop,
   notice,
   videoss,
-  voicer,
   custommodule,
   communitypowder,
   storenotecard,
@@ -164,7 +160,6 @@ export default {
   components: {
     collect,
     headerTop,
-    phoneBottom,
     captiontext,
     placementarea,
     pictureads,
@@ -177,7 +172,6 @@ export default {
     entertheshop,
     notice,
     videoss,
-    voicer,
     custommodule,
     communitypowder,
     storenotecard,
