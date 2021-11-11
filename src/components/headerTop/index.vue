@@ -1,33 +1,40 @@
 <template>
   <!-- 标题 -->
-  <div
-    class="headerTop"
-    style="position: relative"
-    :style="{
-      height: name.titleHeight + 'px',
-    }"
-  >
-    <!-- 左半部分 -->
-    <div @click="pushHome" class="lef" v-if="name.isBack">
-      <van-icon name="arrow-left" />
-    </div>
-    <!-- 标题 -->
+  <div>
     <div
-      class="header-title"
+      class="headerTop"
+      style="position: fixed"
       :style="{
-        height: name.titleHeight + 'px',
-        'line-height': name.titleHeight + 'px',
+        height: name.titleHeight + 'px'
       }"
     >
-      {{ name.name ? name.name : '' }}
+      <!-- 左半部分 -->
+      <div @click="pushHome" class="lef" v-if="name.isBack">
+        <van-icon name="arrow-left" />
+      </div>
+      <!-- 标题 -->
+      <div
+        class="header-title"
+        :style="{
+          height: name.titleHeight + 'px',
+          'line-height': name.titleHeight + 'px'
+        }"
+      >
+        {{ name.name ? name.name : '' }}
+      </div>
+      <div
+        class="rig"
+        @click="
+          $router.push({ name: name.urlname ? name.urlname : 'personal' })
+        "
+        v-if="name.isPerson"
+      >
+        <span v-html="name.subhead ? name.subhead : '个人中心'"></span>
+      </div>
     </div>
-    <div
-      class="rig"
-      @click="$router.push({ name: name.urlname ? name.urlname : 'personal' })"
-      v-if="name.isPerson"
-    >
-      <span v-html="name.subhead ? name.subhead : '个人中心'"></span>
-    </div>
+    <div :style="{
+        height: name.titleHeight + 'px'
+      }"></div>
   </div>
 </template>
 
@@ -35,11 +42,11 @@
 export default {
   name: 'headerTop',
   props: {
-    name: Object,
+    name: Object
   },
   data() {
     return {
-      fanhui: true, //返回按钮是否显示
+      fanhui: true //返回按钮是否显示
     }
   },
 
@@ -70,8 +77,8 @@ export default {
         let shopId = window.localStorage.getItem('shopTemplateId')
         this.$router.push({ path: '/shop', query: { orgId: shopId } })
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -84,7 +91,7 @@ export default {
   background: #fff;
   display: flex;
   box-sizing: border-box;
-  padding: 0 5px;
+  margin-left: -18px;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
@@ -93,25 +100,11 @@ export default {
   z-index: 10;
   /* 左边 */
   .lef {
-    // display: flex;
-    // align-items: center;
-    // height: 100%;
     position: absolute;
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
     /* 图标 */
-    i {
-      padding: 2px;
-      border: 1px solid #dcdcdc;
-      border-radius: 50%;
-      margin-right: 8px;
-      font-size: 14px;
-
-      &::before {
-        color: #dcdcdc;
-      }
-    }
 
     span {
       color: #000;
