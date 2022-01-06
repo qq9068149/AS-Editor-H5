@@ -2,7 +2,7 @@
   <div class="shop">
     <section class="phoneAll" ref="imageTofile" id="imageTofile">
       <!-- 导航 -->
-      <headerTop class="containwe-padding" :name="pageSetup" :head-height="2" />
+      <headerTop class="containwe-padding" :name="pageSetup"  />
       <!-- 收藏组件 -->
       <div class="collect" v-if="orgid">
         <collect></collect>
@@ -16,8 +16,8 @@
             backgroundImage: 'url(' + pageSetup.bgImg + ')'
           }"
         >
-          <template v-for="(item, index) in pageComponents">
-            <keep-alive :include="item.component" :key="index">
+          <div v-for="(item, index) in pageComponents" :key="index">
+            <keep-alive :include="item.component" >
               <component
                 :key="index"
                 :is="item.component"
@@ -27,7 +27,7 @@
                 @clickBanner='clickBanner'
               />
             </keep-alive>
-          </template>
+          </div>
         </section>
       </van-pull-refresh>
     </section>

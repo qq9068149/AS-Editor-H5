@@ -87,7 +87,7 @@ export default {
 /* 导航 */
 .headerTop {
   height: 35px;
-  width: 100%;
+  width: 375px;
   background: #fff;
   display: flex;
   box-sizing: border-box;
