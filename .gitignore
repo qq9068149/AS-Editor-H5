@@ -4,7 +4,6 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 /node_modules
-/AS-Editor-H5
 
 # Other files and folders
 .settings/
