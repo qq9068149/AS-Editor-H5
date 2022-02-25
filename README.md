@@ -24,6 +24,13 @@ AS-Editor链接：[https://gitee.com/was666/as-editor.git](https://gitee.com/was
 ###### 打开AS-Editor-H5  以src/views/home.vue 页面为demo实例
 ![步骤3](https://images.gitee.com/uploads/images/2021/1027/180656_e71a6d53_5546746.png "image3.png")
 
+#### 官方生态
+
+| 项目 | 描述 |
+| --- | --- |
+| [AS-Editor(Vue2版)](https://gitee.com/was666/as-editor) | 基于 Vue2 的 AS-Editor |
+| [AS-Editor(Vue3版)](https://gitee.com/was666/as-editor/tree/vue3.x/) | 基于 Vue3 的 AS-Editor |
+| [AS-Editor-H5](https://gitee.com/was666/as-editor-h5.git) | AS-Editor-H5 是移动端 Vue 模版，可以通过定义的 JSON 生成 Vue 页面 |
 
 #### 参与贡献
 
