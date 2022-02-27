@@ -4,6 +4,8 @@
 
 基于 vue 开发的移动端模版，可以通过定义的JSON生成页面。
 
+#### 搭配
+
 与 [AS-Editor](https://gitee.com/was666/as-editor.git) 一起使用可以简单生成vue页面
 
 AS-Editor链接：[https://gitee.com/was666/as-editor.git](https://gitee.com/was666/as-editor.git)
@@ -18,7 +20,7 @@ AS-Editor链接：[https://gitee.com/was666/as-editor.git](https://gitee.com/was
 
 ##### 使用教程
 
-###### 打开AS-Editor
+###### 打开[AS-Editor](https://gitee.com/was666/as-editor.git)
 ![步骤1](https://images.gitee.com/uploads/images/2021/1027/180625_a6903982_5546746.png "image1.png")
 ![步骤2](https://images.gitee.com/uploads/images/2021/1027/180644_1710b3f0_5546746.png "image2.png")
 ###### 打开AS-Editor-H5  以src/views/home.vue 页面为demo实例
