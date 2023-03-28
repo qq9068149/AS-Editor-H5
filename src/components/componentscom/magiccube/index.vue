@@ -3,7 +3,7 @@
     class="magiccube"
     :style="{
       'padding-left': datas.pageMargin + 'px',
-      'padding-right': datas.pageMargin + 'px',
+      'padding-right': datas.pageMargin + 'px'
     }"
   >
     <img
@@ -26,6 +26,7 @@
       >
         <img
           draggable="false"
+          @click="goHttp(datas.imageList[index - 1])"
           :src="datas.imageList[index - 1].src"
           alt=""
           :style="{ padding: datas.imgMargin / 2 + 'px' }"
@@ -44,11 +45,16 @@
         class="rubiksCubeType1 rubiksCubeType"
         :style="{
           margin: datas.imgMargin / 10 + '%',
-          width: 33.33 + '%',
+          width: 33.33 + '%'
         }"
       >
-      <!--    width: 33 - datas.imgMargin / 10 + '%', -->
-        <img draggable="false" :src="datas.imageList[index - 1].src" alt="" />
+        <!-- width: 33 - datas.imgMargin / 10 + '%', -->
+        <img
+          draggable="false"
+          @click="goHttp(datas.imageList[index - 1])"
+          :src="datas.imageList[index - 1].src"
+          alt=""
+        />
       </div>
     </section>
 
@@ -63,10 +69,15 @@
         class="rubiksCubeType2 rubiksCubeType"
         :style="{
           margin: datas.imgMargin / 10 + '%',
-          width: 25 - datas.imgMargin / 10 + '%',
+          width: 25 - datas.imgMargin / 10 + '%'
         }"
       >
-        <img draggable="false" :src="datas.imageList[index - 1].src" alt="" />
+        <img
+          draggable="false"
+          @click="goHttp(datas.imageList[index - 1])"
+           :src="datas.imageList[index - 1].src"
+          alt=""
+        />
       </div>
     </section>
 
@@ -82,6 +93,7 @@
       >
         <img
           draggable="false"
+          @click="goHttp(datas.imageList[index - 1])"
           :src="datas.imageList[index - 1].src"
           alt=""
           :style="{ padding: datas.imgMargin + 'px' }"
@@ -97,6 +109,7 @@
       <div class="rubiksCubeType hw" style="padding-top: 100%">
         <img
           draggable="false"
+          @click="goHttp(datas.imageList[0])"
           :src="datas.imageList[0].src"
           alt=""
           style="height:300px"
@@ -108,10 +121,11 @@
           class=" hw imgone"
           v-for="index in 2"
           :key="index"
-          style="padding-top: 150px;height:150px"
+          style="padding-top: 150px"
         >
           <img
             draggable="false"
+            @click="goHttp(datas.imageList[index])"
             :src="datas.imageList[index].src"
             alt=""
             style="height:150px"
@@ -129,6 +143,7 @@
       <div class="rubiksCubeType hw" style="display: block; padding-top: 50%">
         <img
           draggable="false"
+          @click="goHttp(datas.imageList[0])"
           :src="datas.imageList[0].src"
           alt=""
           :style="{ 'padding-bottom': datas.imgMargin + 'px' }"
@@ -143,6 +158,7 @@
         >
           <img
             draggable="false"
+            @click="goHttp(datas.imageList[index])"
             :src="datas.imageList[index].src"
             alt=""
             :style="{ padding: datas.imgMargin + 'px' }"
@@ -160,6 +176,7 @@
       <div class="rubiksCubeType hw" style="padding-top: 100%">
         <img
           draggable="false"
+          @click="goHttp(datas.imageList[0])"
           :src="datas.imageList[0].src"
           alt=""
           style="height:300px"
@@ -171,11 +188,12 @@
         <div class="rubiksCubeType hw" style="padding-top: 150px">
           <img
             draggable="false"
+            @click="goHttp(datas.imageList[1])"
             :src="datas.imageList[1].src"
             alt=""
             :style="{
               'padding-bottom': datas.imgMargin + 'px',
-              'padding-left': datas.imgMargin + 'px',
+              'padding-left': datas.imgMargin + 'px'
             }"
           />
         </div>
@@ -193,12 +211,13 @@
           >
             <img
               draggable="false"
+              @click="goHttp(datas.imageList[index + 1])"
               :src="datas.imageList[index + 1].src"
               alt=""
               style="height:150px"
               :style="{
                 'padding-left': datas.imgMargin + 'px',
-                'padding-top': datas.imgMargin + 'px',
+                'padding-top': datas.imgMargin + 'px'
               }"
             />
           </div>
@@ -214,8 +233,14 @@
 <script>
 export default {
   name: 'magiccube',
+  inject: ['productJump'],
   props: {
-    datas: Object,
+    datas: Object
+  },
+  methods: {
+    goHttp(res) {
+      this.productJump(res)
+    }
   },
   computed: {
     showimageList() {
@@ -248,8 +273,8 @@ export default {
         return false
 
       return true
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -322,7 +347,6 @@ export default {
       cursor: pointer;
       &.rubiksCubeType0 {
         width: 50%;
-        // height: 200px;
         &:first-of-type {
           img {
             padding-left: 0 !important;
@@ -339,7 +363,6 @@ export default {
         }
         img {
           width: 100%;
-          // height: 200px;
           display: block;
         }
       }

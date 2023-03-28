@@ -2,19 +2,19 @@
   <div class="tabBar">
     <div v-if="datas.iconList.length !== 0" class="tabbar">
       <van-tabbar
-      route
         v-model="active"
         :placeholder="true"
         :border="datas.isShowBorder"
         :active-color="datas.activeColor"
         :inactive-color="datas.inactiveColor"
+        @change="changeTab"
+        replace="true"
       >
         <van-tabbar-item 
           v-for="(item, index) in datas.iconList"
           :key="index"
           :name="item.iconName"
           :dot="item.isDot"
-          :to="item.http.externalLink"
         >
           <span>{{ item.iconText }}</span>
           <template #icon="props">
@@ -48,6 +48,7 @@
 <script>
 export default {
   name: 'tabBar',
+  inject: ['productJump'],
   props: {
     datas: Object
   },
@@ -59,22 +60,24 @@ export default {
 
   created() {
     console.log(this.datas, '--------------tabbar data  created')
-    document.querySelector('.phone-container').style.cssText =
-      'padding-bottom: 50px'
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    changeTab(index) {
+      if (this.datas.iconList.length !== 0) {
+        console.log(this.datas.iconList[index], '-----------changeTab datas')
+        this.productJump(this.datas.iconList[index])
+      }
+    },
+  },
 
   computed: {},
 
   watch: {},
 
-  beforeDestroy() {
-    document.querySelector('.phone-container').style.cssText =
-      'padding-bottom: 0px'
-  }
+  beforeDestroy() {}
 }
 </script>
 

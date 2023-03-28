@@ -9,11 +9,12 @@ export default {
   provide() {
     return {
       reload: this.reload,
+      productJump: this.productJump
     }
   },
   data() {
     return {
-      isRouterAlive: true,
+      isRouterAlive: true
     }
   },
   methods: {
@@ -24,6 +25,21 @@ export default {
         this.isRouterAlive = true
       })
     },
+    // 跳转事件
+    productJump(res) {
+      if (res.http) {
+        switch (res.linktype) {
+          case '10': // 内部链接
+            this.$router.push({
+              path: res.http.externalLink
+            })
+            break
+          case '11': // 外部链接
+            window.location.href = res.http.externalLink
+            break
+        }
+      }
+    }
   },
   mounted() {
     // 判断是否为移动端
@@ -39,7 +55,7 @@ export default {
         html.style = 'font-size: 37.5px;width: 375px; margin: 0 auto;'
       }
     }
-  },
+  }
 }
 </script>
 <style lang="less">
